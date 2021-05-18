@@ -1,7 +1,7 @@
 {
-  "name": "rollup-sdk-ts",
+  "name": "@chaos-kit/ask",
   "version": "0.0.0",
-  "description": "> a sdk library ",
+  "description": "> a lite library for fetch",
   "author": "jeiizou <jeiizou@qq.com>",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -45,5 +45,11 @@
     "typescript": "^4.2.4"
   },
   "keywords": [],
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@chaos-kit/base": "^0.0.3",
+    "@chaos-kit/lru": "^0.0.3",
+    "@types/lodash": "^4.14.169",
+    "lodash": "^4.17.21"
+  }
 }
