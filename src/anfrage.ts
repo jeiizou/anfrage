@@ -4,7 +4,7 @@ import * as defaultConfig from './default';
 import { mergeOption } from './util/utils';
 import { getResponse } from './util/response';
 
-export default class Request {
+export default class Anfrage {
     lruCache:
         | LRU<
               string,

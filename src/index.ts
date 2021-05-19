@@ -1,3 +1,3 @@
-import Request from './request';
+import Anfrage from './anfrage';
 
-export default Request;
+export default Anfrage;
