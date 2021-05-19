@@ -35,16 +35,13 @@ type RequestContext = {
     responseTransformer?: ((response: localResponse) => localResponse)[];
 };
 
-type RequestParams = {
+interface RequestParams extends RequestInit {
     // 请求的接口地址
     url: string;
     // 状态校验函数
     validateStatus: (status: number) => boolean;
-    // fetch 参数设置
-    config: RequestInit;
     // 返回数据类型
     responseType: string;
-
     // // 下载进度函数
     // onDownloadProgress?: (
     //     this: XMLHttpRequest,
@@ -55,7 +52,7 @@ type RequestParams = {
     //     this: XMLHttpRequestUpload,
     //     ev: ProgressEvent<XMLHttpRequestEventTarget>,
     // ) => any;
-};
+}
 
 type localResponse = {
     // 返回数据

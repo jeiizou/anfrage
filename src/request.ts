@@ -9,7 +9,7 @@ export default class Request {
         | LRU<
               string,
               {
-                  data: any;
+                  data: localResponse;
                   time: number;
               }
           >
@@ -17,7 +17,7 @@ export default class Request {
 
     requestContext: RequestContext;
 
-    constructor(params: Partial<RequestContext>) {
+    constructor(params: Partial<RequestContext> = {}) {
         this.requestContext = mergeOption(
             defaultConfig.defaultRequestContext,
             params,
@@ -61,7 +61,7 @@ export default class Request {
         }
     }
 
-    async send(option: Partial<RequestParams>) {
+    private async send(option: Partial<RequestParams>) {
         let sendOption = mergeOption(this.requestContext.default, option);
 
         try {
@@ -72,7 +72,12 @@ export default class Request {
                 sendOption = requestFunction(this.requestContext, sendOption);
             }
 
-            const fetchConfig: RequestInit = sendOption.config;
+            const fetchConfig = {
+                ...sendOption,
+                url: undefined,
+                responseType: undefined,
+                validateStatus: undefined,
+            } as RequestInit;
 
             fetchConfig.method =
                 fetchConfig.method?.toLocaleUpperCase() || 'GET';
@@ -91,7 +96,10 @@ export default class Request {
             if (sendOption.validateStatus(fetchResult.status)) {
                 // TODO: 抽象 build Response 方法
                 response = {
-                    data: getResponse(fetchResult, sendOption.responseType),
+                    data: await getResponse(
+                        fetchResult,
+                        sendOption.responseType,
+                    ),
                     status: fetchResult.status,
                     statusText: fetchResult.statusText,
                     headers: fetchResult.headers,

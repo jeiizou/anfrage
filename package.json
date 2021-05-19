@@ -1,5 +1,5 @@
 {
-  "name": "@chaos-kit/ask",
+  "name": "@chaos-kit/anfrage",
   "version": "0.0.0",
   "description": "> a lite library for fetch",
   "author": "jeiizou <jeiizou@qq.com>",
@@ -33,7 +33,9 @@
     "@rollup/plugin-node-resolve": "^13.0.0",
     "@rollup/plugin-replace": "^2.4.2",
     "@types/jest": "^26.0.23",
+    "fetch-mock-jest": "^1.5.1",
     "jest": "^26.6.3",
+    "node-fetch": "^2.6.1",
     "rollup": "^2.47.0",
     "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-copy": "^3.4.0",

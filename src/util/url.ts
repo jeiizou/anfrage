@@ -26,7 +26,7 @@ function encode(val: string) {
  */
 export function buildURL(
     url: string,
-    params: any,
+    params?: any,
     paramsSerializer?: paramsSerializerFunction,
 ) {
     if (!params) {

@@ -12,11 +12,11 @@ export const defaultFetchConfig: RequestInit = {
 
 export const defaultRequestParams: RequestParams = {
     url: '',
-    config: defaultFetchConfig,
     responseType: 'json',
     validateStatus: function validateStatus(status: number) {
         return status >= 200 && status < 300;
     },
+    ...defaultFetchConfig,
 };
 
 export const defaultRequestContext: RequestContext = {
