@@ -13,6 +13,8 @@ export const defaultFetchConfig: RequestInit = {
 export const defaultRequestParams: RequestParams = {
     url: '',
     responseType: 'json',
+    timeout: 0,
+    timeoutErrorMessage: 'request timeout',
     validateStatus: function validateStatus(status: number) {
         return status >= 200 && status < 300;
     },
@@ -21,7 +23,6 @@ export const defaultRequestParams: RequestParams = {
 
 export const defaultRequestContext: RequestContext = {
     domain: '',
-    timeout: 0,
     cacheLimit: 0,
     cacheTime: 0,
     retryLimit: 0,

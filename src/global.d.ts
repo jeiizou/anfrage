@@ -7,12 +7,6 @@ type paramsSerializerFunction = (params: KVStringObject) => string;
 type RequestContext = {
     // 主域
     domain: string;
-
-    // 超时时间
-    timeout: number;
-    // 超时提示文本
-    timeoutErrorMessage?: string;
-
     // 最多缓存的请求数量
     cacheLimit: number;
     // 最长缓存失效时间
@@ -42,6 +36,10 @@ interface RequestParams extends RequestInit {
     validateStatus: (status: number) => boolean;
     // 返回数据类型
     responseType: string;
+    // 超时时间
+    timeout?: number;
+    // 超时提示文本
+    timeoutErrorMessage?: string;
     // // 下载进度函数
     // onDownloadProgress?: (
     //     this: XMLHttpRequest,

@@ -1,4 +1,4 @@
-import Request from '../src/index';
+import { createRequest } from '../src/index';
 import fetchMock from 'fetch-mock-jest';
 
 function sleep(time: number) {
@@ -21,24 +21,18 @@ describe('global test', () => {
     fetchMock.get('http://www.test.com/users', users);
 
     test('base request', async () => {
-        let request = new Request({
+        let request = createRequest({
             domain: 'http://www.test.com',
         });
 
-        expect(
-            (
-                await request.request({
-                    url: 'users',
-                    method: 'GET',
-                })
-            ).data,
-        ).toEqual(users);
+        let res = await request.request({ url: 'users', method: 'GET' });
 
+        expect(res.data).toEqual(users);
         expect(fetchMock).toHaveLastFetched('http://www.test.com/users', 'get');
     });
 
     test('request cache', async () => {
-        let request = new Request({
+        let request = createRequest({
             domain: 'http://www.test.com',
             cacheLimit: 2,
             cacheTime: 500,
