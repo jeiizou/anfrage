@@ -53,7 +53,7 @@ export default [
             }),
             cleanup(),
             commonjs(),
-            // terser(),
+            terser(),
             pluginDelete({ targets: 'lib/*' }),
         ],
     },

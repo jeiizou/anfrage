@@ -1,11 +1,6 @@
-import { createRequest } from '../src/index';
+import { createAnfrage } from '../src/index';
 import fetchMock from 'fetch-mock-jest';
-
-function sleep(time: number) {
-    return new Promise(resolve => {
-        setTimeout(resolve, time);
-    });
-}
+import { sleep } from './utils/sleep';
 
 describe('global test', () => {
     const users = [
@@ -21,7 +16,7 @@ describe('global test', () => {
     fetchMock.get('http://www.test.com/users', users);
 
     test('base request', async () => {
-        let request = createRequest({
+        let request = createAnfrage({
             domain: 'http://www.test.com',
         });
 
@@ -32,7 +27,7 @@ describe('global test', () => {
     });
 
     test('request cache', async () => {
-        let request = createRequest({
+        let request = createAnfrage({
             domain: 'http://www.test.com',
             cacheLimit: 2,
             cacheTime: 500,

@@ -1,12 +1,20 @@
 import { createRequest } from './request';
-export { createRequest } from './request';
 
-// export create function
 // create instance with default config
 export const instance = createRequest();
+// export create function
+export const createAnfrage = createRequest;
 
-function Anfrage(config: Partial<RequestParams>) {
-    return instance.request(config);
+export function Anfrage(
+    config: Partial<RequestParams>,
+    context?: Partial<RequestContext>,
+) {
+    if (context) {
+        let newInstance = createAnfrage(context);
+        return newInstance.request(config);
+    } else {
+        return instance.request(config);
+    }
 }
 
 [
@@ -31,5 +39,3 @@ function Anfrage(config: Partial<RequestParams>) {
         });
     };
 });
-
-export default Anfrage;
