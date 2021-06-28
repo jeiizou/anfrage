@@ -8,6 +8,7 @@ import { errorMsg } from './util/error';
 export class Request {
     #cache: CacheController<localResponse> | undefined;
     #asyncpool: AsyncPool<localResponse> | undefined;
+
     #requestContext: RequestContext;
 
     constructor(

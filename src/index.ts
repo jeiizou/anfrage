@@ -5,6 +5,12 @@ export const instance = createRequest();
 // export create function
 export const createAnfrage = createRequest;
 
+/**
+ * Anfrage Function 
+ * @param config 
+ * @param context 
+ * @returns response
+ */
 export function Anfrage(
     config: Partial<RequestParams>,
     context?: Partial<RequestContext>,

@@ -1,4 +1,15 @@
-# chaos-fetch
+# @chaos-kit/anfrage
+
+a lit fetch library
+
+```js
+import { Anfrage } from '@chaos-kit/anfrage';
+
+Anfrage.get('/demos')
+    .then(data => {
+        console.log(data)
+    })
+```
 
 ## features
 
